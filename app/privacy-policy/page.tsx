@@ -24,16 +24,13 @@ export default function PrivacyPolicy() {
             </p>
 
             <div className="space-y-8 text-gray-700 dark:text-gray-300">
+
               <section>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                   1. Introduction
                 </h2>
                 <p className="leading-relaxed">
-                  Welcome to Nextjs Starter Kit (&aposwe,&apos &aposour,&apos or
-                  &aposus&apos). We are committed to protecting your personal
-                  information and your right to privacy. This Privacy Policy
-                  explains how we collect, use, disclose, and safeguard your
-                  information when you use our service.
+                  Welcome to SchoolAbroad, registered as SchoolOutside International (“we,” “our,” or “us”). We are committed to protecting your personal information and respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services, including study abroad placement, visa assistance, and related services.
                 </p>
               </section>
 
@@ -47,30 +44,14 @@ export default function PrivacyPolicy() {
                       Personal Information
                     </h3>
                     <p className="leading-relaxed">
-                      When you register for an account, we collect:
+                      When you register or use our services, we may collect:
                     </p>
                     <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-                      <li>Name</li>
-                      <li>Email address</li>
-                      <li>
-                        Google account information (when using Google Sign-In)
-                      </li>
-                      <li>Organization details</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-2">
-                      Pass Information
-                    </h3>
-                    <p className="leading-relaxed">
-                      When you create Apple Passes, we store:
-                    </p>
-                    <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-                      <li>Pass content and metadata</li>
-                      <li>Pass templates and designs</li>
-                      <li>Pass usage analytics</li>
-                      <li>Pass installation data</li>
+                      <li>Full name and contact details</li>
+                      <li>Educational background and transcripts</li>
+                      <li>Passport and identification documents</li>
+                      <li>Visa, travel, and guardianship information</li>
+                      <li>Financial information for tuition and service payments</li>
                     </ul>
                   </div>
 
@@ -79,14 +60,13 @@ export default function PrivacyPolicy() {
                       Automatically Collected Information
                     </h3>
                     <p className="leading-relaxed">
-                      We automatically collect certain information when you use
-                      our service:
+                      We automatically collect certain information when you use our website or services:
                     </p>
                     <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-                      <li>IP address</li>
-                      <li>Browser type and version</li>
-                      <li>Device information</li>
-                      <li>Usage data and analytics</li>
+                      <li>IP address and browser type</li>
+                      <li>Device type and operating system</li>
+                      <li>Usage data and website interactions</li>
+                      <li>Analytics data for service improvement</li>
                     </ul>
                   </div>
                 </div>
@@ -100,14 +80,12 @@ export default function PrivacyPolicy() {
                   We use your information to:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Provide and maintain our service</li>
-                  <li>Create and manage your account</li>
-                  <li>Generate and distribute Apple Passes</li>
-                  <li>Send you important updates and notifications</li>
-                  <li>Respond to your inquiries and support requests</li>
-                  <li>Monitor and analyze usage patterns</li>
-                  <li>Improve our service and develop new features</li>
-                  <li>Comply with legal obligations</li>
+                  <li>Provide and manage our study abroad and visa services</li>
+                  <li>Assist with applications, scholarships, and admissions</li>
+                  <li>Offer guardianship and pre-departure support for minors</li>
+                  <li>Send updates, notifications, and important communications</li>
+                  <li>Analyze service usage and improve our offerings</li>
+                  <li>Comply with legal obligations and reporting requirements</li>
                 </ul>
               </section>
 
@@ -116,29 +94,14 @@ export default function PrivacyPolicy() {
                   4. Data Sharing and Disclosure
                 </h2>
                 <p className="leading-relaxed mb-3">
-                  We may share your information in the following situations:
+                  We may share your information in the following circumstances:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>
-                    <strong>With your consent:</strong> We may share your
-                    information for any purpose with your explicit consent
-                  </li>
-                  <li>
-                    <strong>Service providers:</strong> We share data with
-                    third-party vendors who assist in providing our services
-                  </li>
-                  <li>
-                    <strong>Legal requirements:</strong> We may disclose
-                    information if required by law or valid legal process
-                  </li>
-                  <li>
-                    <strong>Business transfers:</strong> In connection with any
-                    merger, sale, or acquisition
-                  </li>
-                  <li>
-                    <strong>Protection of rights:</strong> To protect our
-                    rights, privacy, safety, or property
-                  </li>
+                  <li><strong>With your consent:</strong> Only for purposes you explicitly approve.</li>
+                  <li><strong>Service providers:</strong> Third-party vendors supporting our services, such as schools, visa authorities, or scholarship bodies.</li>
+                  <li><strong>Legal requirements:</strong> To comply with laws or legal proceedings.</li>
+                  <li><strong>Business transfers:</strong> During mergers, acquisitions, or asset sales.</li>
+                  <li><strong>Protection of rights:</strong> To safeguard our legal rights, property, or safety.</li>
                 </ul>
               </section>
 
@@ -147,25 +110,7 @@ export default function PrivacyPolicy() {
                   5. Third-Party Services
                 </h2>
                 <p className="leading-relaxed">
-                  We use the following third-party services that may collect
-                  information:
-                </p>
-                <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-                  <li>
-                    <strong>Google Sign-In:</strong> For authentication services
-                  </li>
-                  <li>
-                    <strong>Payment processors:</strong> For handling
-                    subscription payments
-                  </li>
-                  <li>
-                    <strong>Analytics services:</strong> To understand service
-                    usage
-                  </li>
-                </ul>
-                <p className="mt-3 leading-relaxed">
-                  These services have their own privacy policies governing the
-                  use of your information.
+                  We may use third-party services, such as educational institutions, payment processors, and analytics providers. These third parties have their own privacy practices.
                 </p>
               </section>
 
@@ -174,10 +119,7 @@ export default function PrivacyPolicy() {
                   6. Data Security
                 </h2>
                 <p className="leading-relaxed">
-                  We implement appropriate technical and organizational security
-                  measures to protect your personal information. However, no
-                  method of transmission over the Internet or electronic storage
-                  is 100% secure, and we cannot guarantee absolute security.
+                  We implement industry-standard technical and organizational measures to protect your personal information. However, no system is completely secure, and we cannot guarantee absolute security.
                 </p>
               </section>
 
@@ -186,11 +128,7 @@ export default function PrivacyPolicy() {
                   7. Data Retention
                 </h2>
                 <p className="leading-relaxed">
-                  We retain your personal information for as long as necessary
-                  to provide our services and fulfill the purposes outlined in
-                  this Privacy Policy. We will also retain and use your
-                  information to comply with legal obligations, resolve
-                  disputes, and enforce our agreements.
+                  We retain personal information as long as necessary to provide our services and comply with legal obligations. Data may be retained longer for dispute resolution or regulatory compliance.
                 </p>
               </section>
 
@@ -199,42 +137,23 @@ export default function PrivacyPolicy() {
                   8. Your Rights
                 </h2>
                 <p className="leading-relaxed mb-3">
-                  Depending on your location, you may have the following rights:
+                  Depending on your location, you may have rights to:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>
-                    <strong>Access:</strong> Request access to your personal
-                    information
-                  </li>
-                  <li>
-                    <strong>Correction:</strong> Request correction of
-                    inaccurate information
-                  </li>
-                  <li>
-                    <strong>Deletion:</strong> Request deletion of your personal
-                    information
-                  </li>
-                  <li>
-                    <strong>Portability:</strong> Request a copy of your data in
-                    a portable format
-                  </li>
-                  <li>
-                    <strong>Objection:</strong> Object to certain processing of
-                    your information
-                  </li>
+                  <li>Access your personal data</li>
+                  <li>Correct inaccurate or incomplete information</li>
+                  <li>Request deletion of personal information</li>
+                  <li>Receive a copy of your data in portable format</li>
+                  <li>Object to specific processing activities</li>
                 </ul>
               </section>
 
               <section>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  9. Children&aposs Privacy
+                  9. Children’s Privacy
                 </h2>
                 <p className="leading-relaxed">
-                  Our service is not intended for children under 13 years of
-                  age. We do not knowingly collect personal information from
-                  children under 13. If you are a parent or guardian and believe
-                  your child has provided us with personal information, please
-                  contact us.
+                  Our services are not intended for children under 13. We do not knowingly collect data from children. Parents or guardians who believe their child has provided personal information should contact us.
                 </p>
               </section>
 
@@ -243,10 +162,7 @@ export default function PrivacyPolicy() {
                   10. International Data Transfers
                 </h2>
                 <p className="leading-relaxed">
-                  Your information may be transferred to and processed in
-                  countries other than your country of residence. These
-                  countries may have data protection laws that are different
-                  from the laws of your country.
+                  Your information may be transferred to countries outside your residence for providing services. These countries may have different data protection laws.
                 </p>
               </section>
 
@@ -255,9 +171,7 @@ export default function PrivacyPolicy() {
                   11. Updates to This Policy
                 </h2>
                 <p className="leading-relaxed">
-                  We may update this Privacy Policy from time to time. We will
-                  notify you of any changes by posting the new Privacy Policy on
-                  this page and updating the &aposLast updated&apos date.
+                  We may update this Privacy Policy occasionally. Changes will be posted on this page with an updated “Last updated” date.
                 </p>
               </section>
 
@@ -266,14 +180,15 @@ export default function PrivacyPolicy() {
                   12. Contact Us
                 </h2>
                 <p className="leading-relaxed">
-                  If you have any questions about this Privacy Policy or our
-                  data practices, please contact us at:
+                  For questions about this Privacy Policy or our data practices, contact us at:
                 </p>
                 <div className="mt-3 space-y-1">
-                  <p>Email: privacy@applepass.com</p>
-                  <p>Address: [Your Company Address]</p>
+                  <p>Email: info@schoolabroad.org</p>
+                  <p>Address: Europe: pierre vermeir, Antony, Paris, France. <br />
+                  Africa: 1A Junction Road, Kaduna, Nigeria Zone</p>
                 </div>
               </section>
+
             </div>
           </CardContent>
         </Card>

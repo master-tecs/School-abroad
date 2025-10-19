@@ -1,10 +1,11 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950">
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
+    <section className="container mx-auto px-4 py-10">
         <div className="mb-8">
           <Link
             href="/"
@@ -13,310 +14,261 @@ export default function TermsOfService() {
             ← Back to home
           </Link>
         </div>
+        
+      <Card className="shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-center">
+            Terms and Conditions
+          </CardTitle>
+        </CardHeader>
 
-        <Card className="shadow-xl border-0">
-          <CardContent className="p-8 md:p-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-8">
-              Terms of Service
-            </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">
-              Last updated: {new Date().toLocaleDateString()}
-            </p>
+        <CardContent className="space-y-6 leading-relaxed">
+          <p className="text-center text-muted-foreground">
+            (Please scroll down and read our Terms and Conditions carefully.)
+          </p>
 
-            <div className="space-y-8 text-gray-700 dark:text-gray-300">
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  1. Acceptance of Terms
-                </h2>
-                <p className="leading-relaxed">
-                  By accessing and using Apple Pass (&apos;Service&apos;), you
-                  accept and agree to be bound by the terms and provisions of
-                  this agreement. If you do not agree to abide by the above,
-                  please do not use this Service.
-                </p>
-              </section>
+          <p>
+            Our service terms and conditions for{" "}
+            <strong>SchoolAbroad</strong>, registered as{" "}
+            <strong>SchoolOutside International</strong>, are as follows:
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  2. Description of Service
-                </h2>
-                <p className="leading-relaxed">
-                  Apple Pass provides a platform for creating, managing, and
-                  distributing digital passes for Apple Wallet. Our Service
-                  includes tools for designing passes, managing pass data,
-                  tracking pass usage, and sending push notifications to pass
-                  holders.
-                </p>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            1. Service Fees and Family Packages
+          </h2>
+          <p>
+            Our fees are charged per individual. Family packages are available
+            <strong> only</strong> for Visa application services. A family is
+            defined as a husband, wife, and children under 18 years. Siblings,
+            children above 18, and extended families are treated as separate
+            applications.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  3. User Accounts
-                </h2>
-                <div className="space-y-3">
-                  <p className="leading-relaxed">
-                    To use certain features of the Service, you must register
-                    for an account. When you register for an account, you agree
-                    to:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>Provide accurate, current, and complete information</li>
-                    <li>
-                      Maintain and update your information to keep it accurate
-                      and complete
-                    </li>
-                    <li>Maintain the security of your account credentials</li>
-                    <li>
-                      Accept responsibility for all activities that occur under
-                      your account
-                    </li>
-                    <li>
-                      Notify us immediately of any unauthorized use of your
-                      account
-                    </li>
-                  </ul>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">2. Confidentiality</h2>
+          <p>
+            We receive and treat all documents sent to us with high
+            confidentiality. The documents are only used for their intended
+            purpose.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  4. Subscription and Payment
-                </h2>
-                <div className="space-y-3">
-                  <p className="leading-relaxed">
-                    Some aspects of our Service are provided on a subscription
-                    basis. By subscribing, you agree to:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>
-                      Pay all applicable fees as described in our pricing plans
-                    </li>
-                    <li>
-                      Provide current, complete, and accurate billing
-                      information
-                    </li>
-                    <li>
-                      Authorize us to charge your payment method on a recurring
-                      basis
-                    </li>
-                    <li>
-                      Be responsible for all charges incurred under your account
-                    </li>
-                  </ul>
-                  <p className="leading-relaxed mt-3">
-                    Subscription fees are non-refundable except as required by
-                    law. We reserve the right to change our subscription plans
-                    or adjust pricing with 30 days&apos; notice.
-                  </p>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            3. Study Placement Services
+          </h2>
+          <p>
+            Our job is to help prospective students apply for study placements
+            available in foreign countries and monitor the process rigorously
+            until a decision is received. Scholarships may be available and can
+            either be full or partial, depending on the providers. This
+            information will be conveyed to the applicant early to help them
+            decide which route to take.
+          </p>
+          <p>
+            The Study Abroad Service charge entitles a client to{" "}
+            <strong>three applications only</strong>, which may be in three
+            different schools in the same country or in different countries.
+            This excludes university application fees, if required.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  5. User Responsibilities and Conduct
-                </h2>
-                <div className="space-y-3">
-                  <p className="leading-relaxed">
-                    You agree to use the Service only for lawful purposes and in
-                    accordance with these Terms. You agree not to:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>
-                      Use the Service in any way that violates any applicable
-                      laws or regulations
-                    </li>
-                    <li>
-                      Create passes that contain false, misleading, or
-                      fraudulent information
-                    </li>
-                    <li>
-                      Impersonate any person or entity or misrepresent your
-                      affiliation
-                    </li>
-                    <li>
-                      Upload or transmit viruses or any other type of malicious
-                      code
-                    </li>
-                    <li>
-                      Attempt to gain unauthorized access to any portion of the
-                      Service
-                    </li>
-                    <li>Interfere with or disrupt the Service or servers</li>
-                    <li>
-                      Use the Service to send spam or unsolicited communications
-                    </li>
-                    <li>Violate the privacy rights of others</li>
-                  </ul>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">4. Minors and Guardianship</h2>
+          <p>
+            SchoolOutside accompanies students under 18 years of age to their
+            study destinations as guardians until they are properly settled at
+            their universities. Parents or guardians must provide full
+            disclosure of all relevant information concerning their wards. We
+            are not liable for any consequences arising from withheld
+            information.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  6. Intellectual Property Rights
-                </h2>
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium mb-2">
-                    Our Intellectual Property
-                  </h3>
-                  <p className="leading-relaxed">
-                    The Service and its original content, features, and
-                    functionality are owned by Apple Pass and are protected by
-                    international copyright, trademark, patent, trade secret,
-                    and other intellectual property laws.
-                  </p>
+          <h2 className="text-xl font-semibold mt-6">
+            5. Responsibility and Limitations
+          </h2>
+          <p>
+            SchoolOutside is not responsible for decisions made by universities,
+            institutions, scholarship bodies, or visa authorities. Admission,
+            scholarship, internship, and visa decisions lie solely with the
+            respective authorities. We are not liable for declined applications
+            or rejections; however, our professional experience increases your
+            likelihood of a positive outcome.
+          </p>
 
-                  <h3 className="text-lg font-medium mb-2 mt-4">
-                    Your Content
-                  </h3>
-                  <p className="leading-relaxed">
-                    You retain ownership of any content you create using our
-                    Service. By using our Service, you grant us a worldwide,
-                    non-exclusive, royalty-free license to use, reproduce, and
-                    display your content solely for the purpose of providing the
-                    Service to you.
-                  </p>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            6. Pre-Departure and Arrival Counselling
+          </h2>
+          <p>
+            Once your Study Visa, PR, or Tourist Visa has been approved, we
+            provide pre-departure and arrival counselling for clients who book
+            our Study Abroad or Visa Application Services. This also applies to
+            those relocating within their own country.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  7. Privacy
-                </h2>
-                <p className="leading-relaxed">
-                  Your use of our Service is also governed by our Privacy
-                  Policy. Please review our Privacy Policy, which also governs
-                  the Site and informs users of our data collection practices.
-                </p>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">7. Service Charges and Refunds</h2>
+          <p>
+            Service charges for all services are non-refundable. However, when
+            tuition fees are paid through SchoolOutside and a refund becomes
+            necessary, we will process the refund. Please note that institutions
+            may deduct a percentage before refunding, so the total amount
+            returned may differ from the original payment.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  8. Disclaimers
-                </h2>
-                <div className="space-y-3">
-                  <p className="leading-relaxed uppercase font-medium">
-                    The Service is provided on an &aposAS IS&apos and &aposAS
-                    AVAILABLE&apos basis without warranties of any kind, either
-                    express or implied, including but not limited to:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>Warranties of merchantability</li>
-                    <li>Fitness for a particular purpose</li>
-                    <li>Non-infringement</li>
-                    <li>
-                      That the Service will be uninterrupted or error-free
-                    </li>
-                    <li>That defects will be corrected</li>
-                    <li>
-                      That the Service is free of viruses or harmful components
-                    </li>
-                  </ul>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">8. Document Authenticity</h2>
+          <p>
+            If submitted documents are falsified, you will face the consequences
+            of your actions, including imprisonment (14–21 years). Your
+            admission, visa, or application will be cancelled without refund.
+            SchoolOutside does not engage in illegal business or assist clients
+            in falsifying documents.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  9. Limitation of Liability
-                </h2>
-                <p className="leading-relaxed uppercase font-medium">
-                  To the maximum extent permitted by law, Apple Pass shall not
-                  be liable for any indirect, incidental, special,
-                  consequential, or punitive damages, or any loss of profits or
-                  revenues, whether incurred directly or indirectly, or any loss
-                  of data, use, goodwill, or other intangible losses resulting
-                  from:
-                </p>
-                <ul className="list-disc list-inside space-y-1 ml-4 mt-3">
-                  <li>Your use or inability to use the Service</li>
-                  <li>Any unauthorized access to or use of our servers</li>
-                  <li>
-                    Any interruption or cessation of transmission to or from the
-                    Service
-                  </li>
-                  <li>
-                    Any bugs, viruses, or similar harmful code transmitted
-                    through the Service
-                  </li>
-                  <li>Any errors or omissions in any content</li>
-                </ul>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">9. Refund Policy</h2>
+          <p>
+            The client acknowledges that visa, job offer, or status approvals
+            and their processing times are solely at the discretion of the
+            issuing government or institution. SchoolOutside is not responsible
+            for the decision or duration of these processes.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  10. Indemnification
-                </h2>
-                <p className="leading-relaxed">
-                  You agree to defend, indemnify, and hold harmless Apple Pass
-                  and its affiliates, officers, directors, employees, and agents
-                  from and against any claims, liabilities, damages, judgments,
-                  awards, losses, costs, expenses, or fees arising out of or
-                  relating to your violation of these Terms or your use of the
-                  Service.
-                </p>
-              </section>
+          <ul className="list-decimal pl-6 space-y-2">
+            <li>
+              <strong>9.1</strong> Regardless of the outcome, professional fees
+              for work already performed are non-refundable. Fees for unrendered
+              work will be refunded. Professional fees cover our expertise,
+              effort, and process—not the result.
+            </li>
+            <li>
+              <strong>9.2</strong> If an application is denied due to an error or
+              omission by SchoolOutside or its staff, all professional fees
+              collected will be refunded.
+            </li>
+            <li>
+              <strong>9.3</strong> No refund will be issued if:
+              <ul className="list-disc pl-6 space-y-1 mt-2">
+                <li>The client fails to cooperate or provide required documents.</li>
+                <li>The client withdraws the application at any stage.</li>
+                <li>
+                  Rejection occurs due to false information, fraud, or withheld
+                  details.
+                </li>
+                <li>
+                  The client fails to satisfy immigration or visa requirements.
+                </li>
+                <li>
+                  Rejection results from security, criminal, or legal issues.
+                </li>
+              </ul>
+            </li>
+          </ul>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  11. Termination
-                </h2>
-                <p className="leading-relaxed">
-                  We may terminate or suspend your account and bar access to the
-                  Service immediately, without prior notice or liability, under
-                  our sole discretion, for any reason whatsoever, including
-                  without limitation if you breach the Terms. Upon termination,
-                  your right to use the Service will cease immediately.
-                </p>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            10. Preparatory Classes
+          </h2>
+          <p>
+            Preparatory classes are scheduled for one month. Additional months
+            may be added as determined by the facilitator and applicant to
+            ensure readiness for the test.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  12. Governing Law
-                </h2>
-                <p className="leading-relaxed">
-                  These Terms shall be governed and construed in accordance with
-                  the laws of [Your Jurisdiction], without regard to its
-                  conflict of law provisions. Our failure to enforce any right
-                  or provision of these Terms will not be considered a waiver of
-                  those rights.
-                </p>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            11. Test Registrations
+          </h2>
+          <p>
+            SchoolOutside can assist with registration for IELTS, GRE, GMAT,
+            TOEFL, and other international tests—either for a fee or free if
+            bundled with another service. Except for severe health conditions or
+            acts of God (supported by valid evidence), cancellations are not
+            accepted once tests are paid and scheduled.
+          </p>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  13. Changes to Terms
-                </h2>
-                <p className="leading-relaxed">
-                  We reserve the right, at our sole discretion, to modify or
-                  replace these Terms at any time. If a revision is material, we
-                  will provide at least 30 days notice prior to any new terms
-                  taking effect.
-                </p>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            12. Communication and Policy Updates
+          </h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              <strong>12.1</strong> Once sign-up and payment are complete,
+              communication will primarily be via email, with responses provided
+              within five working days.
+            </li>
+            <li>
+              <strong>12.2</strong> We reserve the right to modify these terms
+              periodically. Continued use of our services implies acceptance of
+              the revised terms. Clients are responsible for checking updates on
+              our website regularly.
+            </li>
+          </ul>
 
-              <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                  14. Contact Information
-                </h2>
-                <p className="leading-relaxed">
-                  If you have any questions about these Terms, please contact us
-                  at:
-                </p>
-                <div className="mt-3 space-y-1">
-                  <p>Email: legal@applepass.com</p>
-                  <p>Address: [Your Company Address]</p>
-                </div>
-              </section>
+          <h2 className="text-xl font-semibold mt-6">
+            13. Privacy of Information and GDPR Compliance
+          </h2>
+          <p>
+            SchoolOutside International (“SchoolOutside”, “we”, or “us”) is
+            committed to protecting your privacy and complying with the EU
+            General Data Protection Regulation (GDPR), where applicable.
+          </p>
 
-              <section className="pt-8 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  By using Apple Pass, you acknowledge that you have read,
-                  understood, and agree to be bound by these Terms of Service.
-                </p>
-              </section>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+          <h3 className="text-lg font-medium mt-4">
+            13.1. Data Collection and Use
+          </h3>
+          <p>
+            We collect personal data necessary for providing our services, such
+            as your name, contact details, educational background, financial
+            information, and passport details. Your documents are treated with
+            strict confidentiality and used only for their intended purpose.
+          </p>
+
+          <h3 className="text-lg font-medium mt-4">
+            13.2. Legal Basis for Processing
+          </h3>
+          <ul className="list-disc pl-6 space-y-1">
+            <li>Contractual necessity to fulfil our agreement with you.</li>
+            <li>Legal obligation under applicable regulations.</li>
+            <li>
+              Legitimate interests where your rights do not override our need to
+              process.
+            </li>
+            <li>Explicit consent for specific data uses when required.</li>
+          </ul>
+
+          <h3 className="text-lg font-medium mt-4">
+            13.3. Data Subject Rights (GDPR)
+          </h3>
+          <ul className="list-disc pl-6 space-y-1">
+            <li>Right to access your data.</li>
+            <li>Right to rectify inaccurate information.</li>
+            <li>Right to erase data (“Right to be Forgotten”).</li>
+            <li>Right to restrict or object to processing.</li>
+            <li>Right to data portability.</li>
+          </ul>
+          <p>
+            To exercise any of these rights, please contact us using the
+            official contact details on our website.
+          </p>
+
+          <h3 className="text-lg font-medium mt-4">
+            13.4. Data Sharing and Transfer
+          </h3>
+          <p>
+            We share your data only with necessary third parties (e.g.,
+            universities, visa authorities, or scholarship bodies). We do not
+            sell personal data. When data is transferred outside the European
+            Economic Area (EEA), safeguards such as standard contractual clauses
+            are applied.
+          </p>
+
+          <h3 className="text-lg font-medium mt-4">
+            13.5. Data Security and Retention
+          </h3>
+          <p>
+            We maintain strict technical and organizational measures to protect
+            your information. Personal data is retained only as long as
+            necessary to fulfil service purposes or comply with legal
+            obligations.
+          </p>
+
+          <p className="mt-8 text-sm text-muted-foreground text-center">
+            Last updated: October 2025 <br />
+            SchoolOutside International / SchoolAbroad
+          </p>
+        </CardContent>
+      </Card>
+    </section>
   );
 }
