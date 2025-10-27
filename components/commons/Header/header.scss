@@ -1,4 +1,4 @@
-w/* ---------- RESETS ---------- */
+/* ---------- RESETS ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ ul {
 .header {
   width: 100%;
   z-index: 100;
-  transition: all 0.3s ease;
+  // transition: all 0.3s ease;
 
   &--sticky {
     position: fixed;
@@ -135,12 +135,21 @@ ul {
 
   /* ---------- NAVBAR ---------- */
   &__navbar {
-    padding: 6px 45px;
+    font-size: 0.95rem;
+    padding: 1rem 0;
 
     border-bottom: 1px solid #f0f0f0;
 
+
+
     > .header__container {
-      padding: auto 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        margin: 0 1.25rem;
+      }
     }
   }
 

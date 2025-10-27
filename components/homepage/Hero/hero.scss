@@ -1,34 +1,38 @@
 .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-  
-    // Background fallback
-    background: url("/assets/images/hero-poster.png") center/cover no-repeat;
-  
-    &__video {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-  
-      video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  position: relative;
+  width: 100%;
+  height: 70vh; // slightly more than half the viewport
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+
+  // Background fallback color and image
+  background-color: #6c63ff; // fallback color
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+    url("/assets/images/hero-poster.png") center/cover no-repeat;
+
+  &__video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7); // dim video for better text visibility
     }
-  
-    &__content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      padding: 0 1rem;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 1rem;
   }
 
   &__subtitle {
@@ -49,20 +53,21 @@
     margin-bottom: 2rem;
 
     .highlight {
-      color: #732efd;
+      color: #ffd60a; // accent color for emphasis
     }
   }
 
   &__buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; // horizontal layout for desktop
     gap: 1rem;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
     .btn {
       display: inline-block;
-      padding: 0.8rem 1.5rem;
-      border-radius: 4px;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
       font-weight: 600;
       font-size: 1rem;
       text-decoration: none;
@@ -91,8 +96,13 @@
   }
 
   @media (max-width: 768px) {
+    height: 80vh; // slightly taller for mobile
     &__title {
-      font-size: 1.8rem;
+      font-size: 2rem;
+    }
+
+    &__buttons {
+      flex-direction: column;
     }
   }
 }

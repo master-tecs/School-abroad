@@ -1,19 +1,10 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import React, { useEffect, useState } from "react";
+import "./pricing-table.scss";
 import { authClient } from "@/lib/auth-client";
-import { Check } from "lucide-react";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { Check } from "lucide-react";
 
 type SubscriptionDetails = {
   id: string;
@@ -65,13 +56,8 @@ export default function PricingTable({
     }
 
     try {
-      await authClient.checkout({
-        products: [productId],
-        slug: slug,
-      });
-    } catch (error) {
-      console.error("Checkout failed:", error);
-      // TODO: Add user-facing error notification
+      await authClient.checkout({ products: [productId], slug });
+    } catch {
       toast.error("Oops, something went wrong");
     }
   };
@@ -79,125 +65,145 @@ export default function PricingTable({
   const handleManageSubscription = async () => {
     try {
       await authClient.customer.portal();
-    } catch (error) {
-      console.error("Failed to open customer portal:", error);
+    } catch {
       toast.error("Failed to open subscription management");
     }
   };
 
-  const STARTER_TIER = process.env.NEXT_PUBLIC_STARTER_TIER;
-  const STARTER_SLUG = process.env.NEXT_PUBLIC_STARTER_SLUG;
+  const PLATINUM_TIER = process.env.NEXT_PUBLIC_PLATINUM_TIER!;
+  const PLATINUM_SLUG = process.env.NEXT_PUBLIC_PLATINUM_SLUG!;
+  const DIAMOND_TIER = process.env.NEXT_PUBLIC_DIAMOND_TIER!;
+  const DIAMOND_SLUG = process.env.NEXT_PUBLIC_DIAMOND_SLUG!;
 
-  if (!STARTER_TIER || !STARTER_SLUG) {
-    throw new Error("Missing required environment variables for Starter tier");
-  }
+  const isCurrentPlan = (tierProductId: string) =>
+    subscriptionDetails.hasSubscription &&
+    subscriptionDetails.subscription?.productId === tierProductId &&
+    subscriptionDetails.subscription?.status === "active";
 
-  const isCurrentPlan = (tierProductId: string) => {
-    return (
-      subscriptionDetails.hasSubscription &&
-      subscriptionDetails.subscription?.productId === tierProductId &&
-      subscriptionDetails.subscription?.status === "active"
-    );
-  };
-
-  const formatDate = (date: Date) => {
-    return new Date(date).toLocaleDateString("en-US", {
+  const formatDate = (date: Date) =>
+    new Date(date).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
-  };
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 mb-24 w-full">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-medium tracking-tight mb-4">
-          Fake Subscription
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          Test out this starter kit using this fake subscription.
+    <section className="pricing">
+      <div className="pricing__header">
+        <h1>Mentorship Plans</h1>
+        <p>
+          Gain access to visa guidance, mentorship calls, global education
+          resources, and a community that supports your study-abroad success
+          starting at <strong>$25/month</strong>.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
-        {/* Starter Tier */}
-        <Card className="relative h-fit">
-          {isCurrentPlan(STARTER_TIER) && (
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <Badge
-                variant="secondary"
-                className="bg-green-100 text-green-800"
-              >
-                Current Plan
-              </Badge>
+      <div className="pricing__grid">
+        {/* Platinum Plan */}
+        <div className={`pricing__card ${isCurrentPlan(PLATINUM_TIER) ? "active" : ""}`}>
+          {isCurrentPlan(PLATINUM_TIER) && <span className="badge">Current Plan</span>}
+
+          <h2 className="plan-title platinum">Platinum Plan</h2>
+          <p className="plan-subtitle">Perfect for self-paced learners</p>
+          <div className="plan-price">
+            <span>$25</span>
+            <small>/month</small>
+          </div>
+
+          <ul className="plan-features">
+            {[
+              "Monthly mentorship call",
+              "Access to premium learning videos",
+              "Community access with mentors",
+              "Visa templates & how-to guides",
+              "Country visa updates and alerts",
+              "Exclusive webinars",
+              "Visa templates & country updates"
+            ].map((feature) => (
+              <li key={feature}>
+                <Check size={18} />
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {isCurrentPlan(PLATINUM_TIER) ? (
+            <div className="plan-actions">
+              <button className="btn btn-outline" onClick={handleManageSubscription}>
+                Manage Subscription
+              </button>
+              {subscriptionDetails.subscription && (
+                <p className="plan-date">
+                  {subscriptionDetails.subscription.cancelAtPeriodEnd
+                    ? `Expires ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`
+                    : `Renews ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`}
+                </p>
+              )}
             </div>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={() => handleCheckout(PLATINUM_TIER, PLATINUM_SLUG)}
+            >
+              {isAuthenticated === false ? "Sign In to Subscribe" : "Join Platinum"}
+            </button>
           )}
-          <CardHeader>
-            <CardTitle className="text-2xl">Starter</CardTitle>
-            <CardDescription>Perfect for getting started</CardDescription>
-            <div className="mt-4">
-              <span className="text-4xl font-bold">$1,000</span>
-              <span className="text-muted-foreground">/month</span>
+        </div>
+
+        {/* Diamond Plan */}
+        <div className={`pricing__card ${isCurrentPlan(DIAMOND_TIER) ? "active" : ""}`}>
+          {isCurrentPlan(DIAMOND_TIER) && <span className="badge">Current Plan</span>}
+
+          <h2 className="plan-title diamond">Diamond Plan</h2>
+          <p className="plan-subtitle">Best for dedicated achievers</p>
+          <div className="plan-price">
+            <span>$45</span>
+            <small>/month</small>
+          </div>
+
+          <ul className="plan-features">
+            {[
+              "Bi-weekly mentorship calls",
+              "Exclusive video library",
+              "Private community access",
+              "Early access to updates",
+              "Exclusive webinars",
+              "Visa templates & country updates",
+              "One-on-one visa & application support",
+              "40% discount on airport pick-up",
+              "Accommodation assistance",
+            ].map((feature) => (
+              <li key={feature}>
+                <Check size={18} />
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {isCurrentPlan(DIAMOND_TIER) ? (
+            <div className="plan-actions">
+              <button className="btn btn-outline" onClick={handleManageSubscription}>
+                Manage Subscription
+              </button>
+              {subscriptionDetails.subscription && (
+                <p className="plan-date">
+                  {subscriptionDetails.subscription.cancelAtPeriodEnd
+                    ? `Expires ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`
+                    : `Renews ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`}
+                </p>
+              )}
             </div>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Check className="h-5 w-5 text-green-500" />
-              <span>5 Projects</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Check className="h-5 w-5 text-green-500" />
-              <span>10GB Storage</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Check className="h-5 w-5 text-green-500" />
-              <span>1 Team Member</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Check className="h-5 w-5 text-green-500" />
-              <span>Email Support</span>
-            </div>
-          </CardContent>
-          <CardFooter>
-            {isCurrentPlan(STARTER_TIER) ? (
-              <div className="w-full space-y-2">
-                <Button
-                  className="w-full"
-                  variant="outline"
-                  onClick={handleManageSubscription}
-                >
-                  Manage Subscription
-                </Button>
-                {subscriptionDetails.subscription && (
-                  <p className="text-sm text-muted-foreground text-center">
-                    {subscriptionDetails.subscription.cancelAtPeriodEnd
-                      ? `Expires ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`
-                      : `Renews ${formatDate(subscriptionDetails.subscription.currentPeriodEnd)}`}
-                  </p>
-                )}
-              </div>
-            ) : (
-              <Button
-                className="w-full"
-                onClick={() => handleCheckout(STARTER_TIER, STARTER_SLUG)}
-              >
-                {isAuthenticated === false
-                  ? "Sign In to Get Started"
-                  : "Get Started"}
-              </Button>
-            )}
-          </CardFooter>
-        </Card>
+          ) : (
+            <button
+              className="btn btn-primary btn-diamond"
+              onClick={() => handleCheckout(DIAMOND_TIER, DIAMOND_SLUG)}
+            >
+              {isAuthenticated === false ? "Sign In to Subscribe" : "Join Diamond"}
+            </button>
+          )}
+        </div>
       </div>
 
-      <div className="mt-12 text-center">
-        <p className="text-muted-foreground">
-          Need a custom plan?{" "}
-          <span className="text-primary cursor-pointer hover:underline">
-            Contact us
-          </span>
-        </p>
-      </div>
     </section>
   );
 }

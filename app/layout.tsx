@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "../components/provider";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import Header from "@/components/commons/header";
+import Header from "@/components/commons/Header/header";
+import FooterSection from "@/components/homepage/footer";
+import ChatAssistant from "@/components/commons/ChatAssistant/chatAssistant";
+import Footer from "@/components/commons/Footer/footer";
 export const metadata: Metadata = {
   title: "Next.js Starter Kit - Launch Your SAAS",
   description:
@@ -44,6 +47,10 @@ export default function RootLayout({
         >
           <Header />
           {children}
+
+          <Footer />
+
+          <ChatAssistant />
           <Toaster />
           <Analytics />
         </ThemeProvider>
