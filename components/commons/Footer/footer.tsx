@@ -68,8 +68,8 @@ export default function Footer() {
               <li><Link href="/gallery">Gallery</Link></li>
               <li><Link href="/global-partnerships">Global Partnerships</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Terms & Conditions</Link></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-service">Terms & Conditions</Link></li>
             </ul>
           </div>
 

@@ -14,7 +14,30 @@ export async function GET() {
     }
 
     const subscriptionDetails = await getSubscriptionDetails();
-    return NextResponse.json(subscriptionDetails);
+    
+    // Determine plan type
+    let planType = "Free";
+    if (
+      subscriptionDetails.hasSubscription &&
+      subscriptionDetails.subscription?.status === "active"
+    ) {
+      const productId = subscriptionDetails.subscription.productId;
+      const platinumId = process.env.NEXT_PUBLIC_PLATINUM_TIER;
+      const diamondId = process.env.NEXT_PUBLIC_DIAMOND_TIER;
+
+      if (productId === diamondId) {
+        planType = "Diamond";
+      } else if (productId === platinumId) {
+        planType = "Platinum";
+      } else {
+        planType = "Premium";
+      }
+    }
+
+    return NextResponse.json({
+      ...subscriptionDetails,
+      planType,
+    });
   } catch (error) {
     console.error("Error fetching subscription details:", error);
     return NextResponse.json(

@@ -50,13 +50,13 @@ export default function Hero() {
         </h2>
 
         <div className="hero__buttons">
-          <a href="#" className="btn btn--primary">
+          <a href="/student" className="btn btn--primary">
             I&apos;m a student
           </a>
-          <a href="#" className="btn btn--outline">
+          <a href="/partners" className="btn btn--outline">
             I&apos;m a partner / Recruiter
           </a>
-          <a href="#" className="btn btn--outline">
+          <a href="/institutions" className="btn btn--outline">
             I&apos;m an Institution
           </a>
         </div>

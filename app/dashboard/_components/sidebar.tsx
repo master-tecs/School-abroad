@@ -1,101 +1,195 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import UserProfile from "@/components/user-profile";
-import clsx from "clsx";
-import {
-  Banknote,
-  HomeIcon,
-  LucideIcon,
-  MessageCircleIcon,
-  Settings,
-  Upload,
-} from "lucide-react";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
+import {
+  Home,
+  Video,
+  Phone,
+  FileText,
+  Plane,
+  MessageCircle,
+  HelpCircle,
+  Star,
+  Lock,
+} from "lucide-react";
 
 interface NavItem {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
+  locked?: boolean;
+  highlight?: boolean;
 }
-
-const navItems: NavItem[] = [
-  {
-    label: "Overview",
-    href: "/dashboard",
-    icon: HomeIcon,
-  },
-  {
-    label: "Chat",
-    href: "/dashboard/chat",
-    icon: MessageCircleIcon,
-  },
-  {
-    label: "Upload",
-    href: "/dashboard/upload",
-    icon: Upload,
-  },
-  {
-    label: "Payment Gated",
-    href: "/dashboard/payment",
-    icon: Banknote,
-  },
-];
 
 export default function DashboardSideBar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [hasSubscription, setHasSubscription] = useState(false);
+
+  useEffect(() => {
+    const checkSubscription = async () => {
+      try {
+        const response = await fetch("/api/subscription");
+        if (response.ok) {
+          const data = await response.json();
+          setHasSubscription(
+            data.hasSubscription &&
+              data.subscription?.status === "active"
+          );
+        }
+      } catch (error) {
+        console.error("Error checking subscription:", error);
+      }
+    };
+    checkSubscription();
+  }, []);
+
+  // Navigation items for dashboard
+  const navItems: NavItem[] = [
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+      icon: Home,
+    },
+    {
+      label: "My Learning",
+      href: "/dashboard/learning",
+      icon: Video,
+      locked: false,
+    },
+    {
+      label: "Mentorship Calls",
+      href: "/dashboard/mentorship",
+      icon: Phone,
+      locked: !hasSubscription,
+    },
+    {
+      label: "Resources & Templates",
+      href: "/dashboard/resources",
+      icon: FileText,
+      locked: !hasSubscription,
+    },
+    {
+      label: "Visa Tracker",
+      href: "/dashboard/visa-tracker",
+      icon: Plane,
+      locked: !hasSubscription,
+    },
+    {
+      label: "Community",
+      href: "/dashboard/community",
+      icon: MessageCircle,
+      locked: !hasSubscription,
+    },
+    {
+      label: "Support",
+      href: "/dashboard/support",
+      icon: HelpCircle,
+    },
+    {
+      label: "Upgrade Plan",
+      href: "/pricing",
+      icon: Star,
+      highlight: !hasSubscription,
+    },
+  ];
+
+  const handleNavClick = (item: NavItem, e: React.MouseEvent) => {
+    if (item.locked) {
+      e.preventDefault();
+      router.push("/pricing");
+    }
+  };
 
   return (
-    <div className="min-[1024px]:block hidden w-64 border-r h-full bg-background">
-      <div className="flex h-full flex-col">
-        <div className="flex h-[3.45rem] items-center border-b px-4">
-          <Link
-            prefetch={true}
-            className="flex items-center font-semibold hover:cursor-pointer"
-            href="/"
-          >
-            <span>Nextjs Starter Kit</span>
+    <div className="dashboard-sidebar">
+      <div className="dashboard-sidebar__container">
+        {/* Logo */}
+        <div className="dashboard-sidebar__logo">
+          <Link href="/" className="dashboard-sidebar__logo-link">
+            <Image
+              src="/assets/images/Schhol_Abroad_logo.jpeg"
+              alt="School Abroad"
+              width={180}
+              height={50}
+              className="dashboard-sidebar__logo-image"
+            />
           </Link>
         </div>
 
-        <nav className="flex flex-col h-full justify-between items-start w-full space-y-1">
-          <div className="w-full space-y-1 p-4">
-            {navItems.map((item) => (
+        {/* Navigation */}
+        <nav className="dashboard-sidebar__nav">
+          <ul className="dashboard-sidebar__nav-list">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              
+              return (
+                <li key={item.href} className="dashboard-sidebar__nav-item">
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleNavClick(item, e)}
+                    className={cn(
+                      "dashboard-sidebar__nav-link",
+                      isActive && "dashboard-sidebar__nav-link--active",
+                      item.highlight && "dashboard-sidebar__nav-link--highlight",
+                      item.locked && "dashboard-sidebar__nav-link--locked"
+                    )}
+                  >
+                    <Icon className="dashboard-sidebar__nav-icon" />
+                    <span>{item.label}</span>
+                    {item.locked && (
+                      <Lock className="dashboard-sidebar__nav-lock" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Progress Indicators */}
+        <div className="dashboard-sidebar__progress">
+          <div className="dashboard-sidebar__progress-item">
+            <div className="dashboard-sidebar__progress-header">
+              <span className="dashboard-sidebar__progress-label">
+                Profile Complete
+              </span>
+              <span className="dashboard-sidebar__progress-percent">70%</span>
+            </div>
+            <div className="dashboard-sidebar__progress-bar">
               <div
-                key={item.href}
-                onClick={() => router.push(item.href)}
-                className={clsx(
-                  "flex items-center gap-2 w-full rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:cursor-pointer",
-                  pathname === item.href
-                    ? "bg-primary/10 text-primary hover:bg-primary/20"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </div>
-            ))}
+                className="dashboard-sidebar__progress-fill"
+                style={{ width: "70%" }}
+              ></div>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2 w-full">
-            <div className="px-4">
-              <div
-                onClick={() => router.push("/dashboard/settings")}
-                className={clsx(
-                  "flex items-center w-full gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:cursor-pointer",
-                  pathname === "/dashboard/settings"
-                    ? "bg-primary/10 text-primary hover:bg-primary/20"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                <Settings className="h-4 w-4" />
-                Settings
-              </div>
+          <div className="dashboard-sidebar__progress-item">
+            <div className="dashboard-sidebar__progress-header">
+              <span className="dashboard-sidebar__progress-label">
+                Visa Application Progress
+              </span>
+              <span className="dashboard-sidebar__progress-percent">40%</span>
             </div>
-            <UserProfile />
+            <div className="dashboard-sidebar__progress-bar">
+              <div
+                className="dashboard-sidebar__progress-fill"
+                style={{ width: "40%" }}
+              ></div>
+            </div>
           </div>
-        </nav>
+        </div>
+
+        {/* User Profile */}
+        <div className="dashboard-sidebar__profile">
+          <UserProfile />
+        </div>
       </div>
     </div>
   );
