@@ -1,60 +1,75 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { ArrowRight, PartyPopper, ShieldCheck, Sparkles } from "lucide-react";
+import "./SuccessPage.scss";
 
 export default function SuccessPage() {
   const router = useRouter();
 
+  const actions = [
+    {
+      title: "Book your mentorship call",
+      description:
+        "Schedule a personal session tailored to your study abroad goals.",
+      icon: <Sparkles className="action-icon yellow" />,
+    },
+    {
+      title: "Access premium resources",
+      description:
+        "Explore visa templates, checklists, and study guides in your dashboard.",
+      icon: <Sparkles className="action-icon green" />,
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <Card className="max-w-md w-full text-center shadow-2xl border-0  backdrop-blur-sm">
-        <CardHeader className="pb-4">
-          <div className="mx-auto mb-4 relative">
-            <div className="absolute inset-0 animate-ping">
-              <CheckCircle className="h-16 w-16 text-blue-400 mx-auto opacity-75" />
+    <div className="success-page">
+      <div className="success-page__header">
+        <div className="badge">
+          <ShieldCheck className="badge-icon" />
+        </div>
+        <h1 className="success-title">You’re officially a member!</h1>
+        <p className="success-description">
+          Thanks for joining our premium mentorship program. Your membership
+          is now active. Check your email for confirmation and next steps.
+        </p>
+      </div>
+
+      <div className="welcome-card">
+        <div className="welcome-header">
+          <PartyPopper className="party-icon" />
+          <span>Welcome to the Platinum & Diamond lounge</span>
+        </div>
+        <p>
+          You now have access to exclusive mentorship calls, visa resources, and
+          member-only community experiences curated for your study-abroad
+          journey.
+        </p>
+      </div>
+
+      <div className="actions-grid">
+        {actions.map((action) => (
+          <div className="action-card" key={action.title}>
+            <div className="action-title">
+              {action.icon}
+              {action.title}
             </div>
-            <CheckCircle className="h-16 w-16 text-blue-400 mx-auto relative" />
+            <p className="action-desc">{action.description}</p>
           </div>
-          <CardTitle className="text-2xl font-bold mb-2">
-            Payment Successful!
-          </CardTitle>
-          <CardDescription className="text-base">
-            Thank you for your subscription. Your account has been activated and
-            you&apos;re ready to start creating.
-          </CardDescription>
-        </CardHeader>
+        ))}
+      </div>
 
-        <CardContent className="space-y-6">
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <Sparkles className="h-4 w-4 text-yellow-500" />
-            <span>Welcome to the team!</span>
-            <Sparkles className="h-4 w-4 text-yellow-500" />
-          </div>
-
-          <Button
-            onClick={() => router.push("/dashboard")}
-            className="w-full text-white font-medium py-3"
-            size="lg"
-          >
-            Dashboard
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-
-          <p className="text-xs text-muted-foreground">
-            You&apos;ll receive a confirmation email shortly with your receipt
-            and next steps.
-          </p>
-        </CardContent>
-      </Card>
+      <div className="cta-section">
+        <button
+          className="cta-button"
+          onClick={() => router.push("/dashboard")}
+        >
+          Go to your dashboard <ArrowRight className="arrow-icon" />
+        </button>
+        <p className="cta-note">
+          Need help? Email <span>support@schoolabroad.org</span>
+        </p>
+      </div>
     </div>
   );
 }

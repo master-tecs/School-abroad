@@ -75,6 +75,42 @@
           font-size: 0.95rem;
           word-wrap: break-word;
   
+          .message-text {
+            display: inline;
+          }
+
+          &.streaming {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.9), rgba(255, 225, 102, 0.9));
+            color: #0b0b15;
+            overflow: hidden;
+
+            &:after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.35),
+                transparent
+              );
+              animation: shimmer 1.5s infinite;
+              pointer-events: none;
+            }
+          }
+          
+          .live-cursor {
+            display: inline-block;
+            width: 6px;
+            height: 1.1em;
+            margin-left: 4px;
+            background: rgba(11, 11, 21, 0.7);
+            border-radius: 3px;
+            animation: pulse 0.9s infinite;
+            vertical-align: bottom;
+          }
+
           &.bot {
             background: #ffcc00;
             color: #0b0b15;
@@ -167,3 +203,24 @@
       }
     }
   }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}

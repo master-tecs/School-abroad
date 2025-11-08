@@ -56,22 +56,38 @@ export const auth = betterAuth({
           products: [
             {
               productId:
-                process.env.NEXT_PUBLIC_STARTER_TIER ||
+                process.env.NEXT_PUBLIC_PLATINUM_TIER ||
                 (() => {
                   throw new Error(
-                    "NEXT_PUBLIC_STARTER_TIER environment variable is required",
+                    "NEXT_PUBLIC_PLATINUM_TIER environment variable is required",
                   );
                 })(),
               slug:
-                process.env.NEXT_PUBLIC_STARTER_SLUG ||
+                process.env.NEXT_PUBLIC_PLATINUM_SLUG ||
                 (() => {
                   throw new Error(
-                    "NEXT_PUBLIC_STARTER_SLUG environment variable is required",
+                    "NEXT_PUBLIC_PLATINUM_SLUG environment variable is required",
+                  );
+                })(),
+            },
+            {
+              productId:
+                process.env.NEXT_PUBLIC_DIAMOND_TIER ||
+                (() => {
+                  throw new Error(
+                    "NEXT_PUBLIC_DIAMOND_TIER environment variable is required",
+                  );
+                })(),
+              slug:
+                process.env.NEXT_PUBLIC_DIAMOND_SLUG ||
+                (() => {
+                  throw new Error(
+                    "NEXT_PUBLIC_DIAMOND_SLUG environment variable is required",
                   );
                 })(),
             },
           ],
-          successUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${process.env.POLAR_SUCCESS_URL}`,
+          successUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${process.env.POLAR_SUCCESS_URL ?? "success"}`,
           authenticatedUsersOnly: true,
         }),
         portal(),
